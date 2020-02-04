@@ -1,4 +1,4 @@
-package common.message;
+package login.message;
 
 public class LoginCreation {
 	public String userName;

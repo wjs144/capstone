@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import common.message.EndpointMessageBase;
-import common.message.GetUnknownPasswordResponse;
-import common.message.LoginCreation;
-import common.message.LoginCreationResponse;
-import common.message.LoginRequest;
-import common.message.LoginResponse;
-import common.message.UpdatePassword;
-import common.message.UpdatePasswordResponse;
-import common.message.UpdateUnknownPassword;
-import manager.login.LoginManager;
+import login.manager.LoginManager;
+import login.message.GetUnknownPasswordResponse;
+import login.message.LoginCreation;
+import login.message.LoginCreationResponse;
+import login.message.LoginRequest;
+import login.message.LoginResponse;
+import login.message.UpdatePassword;
+import login.message.UpdatePasswordResponse;
+import login.message.UpdateUnknownPassword;
 
 /**
  * endpoint for account management

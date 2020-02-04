@@ -1,4 +1,4 @@
-package manager.login;
+package login.manager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import common.message.ErrorMessageBase;
+import login.manager.LoginManager;
 
 class LoginManagerTests {
 

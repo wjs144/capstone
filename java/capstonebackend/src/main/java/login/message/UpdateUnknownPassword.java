@@ -1,4 +1,4 @@
-package common.message;
+package login.message;
 
 public class UpdateUnknownPassword {
 	public String username;

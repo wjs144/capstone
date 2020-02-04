@@ -1,10 +1,10 @@
-package manager.login;
+package login.manager;
 
 import common.message.ErrorMessageBase;
-import common.message.LoginCreation;
-import common.message.LoginRequest;
-import common.message.UpdatePassword;
-import common.message.UpdateUnknownPassword;
+import login.message.LoginCreation;
+import login.message.LoginRequest;
+import login.message.UpdatePassword;
+import login.message.UpdateUnknownPassword;
 
 public class LoginManager {
 	
