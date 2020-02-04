@@ -132,4 +132,25 @@ class LoginManagerTests {
 		message.messageSuccess = true;
 	}
 
+	@Test
+	void testValidateToken() {
+		LoginManager manager = new LoginManager();
+		ErrorMessageBase message = new ErrorMessageBase();
+		
+		manager.validateToken("###", message);
+		Assertions.assertFalse(message.messageSuccess);
+		message.messageSuccess = true;
+		
+		manager.validateToken(null, message);
+		Assertions.assertFalse(message.messageSuccess);
+		message.messageSuccess = true;
+
+		manager.validateToken("", message);
+		Assertions.assertFalse(message.messageSuccess);
+		message.messageSuccess = true;
+
+		manager.validateToken("aa", message);
+		message.errorMsg.get(0);
+		Assertions.assertTrue(message.messageSuccess);
+	}
 }

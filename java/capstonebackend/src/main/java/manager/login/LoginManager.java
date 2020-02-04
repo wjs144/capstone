@@ -2,11 +2,53 @@ package manager.login;
 
 import common.message.ErrorMessageBase;
 import common.message.LoginCreation;
+import common.message.LoginRequest;
+import common.message.UpdatePassword;
+import common.message.UpdateUnknownPassword;
 
 public class LoginManager {
 	
 	public LoginManager()
 	{}
+
+	public ErrorMessageBase validateUnknownPasswordUpdate(UpdateUnknownPassword updatePassword) {
+		ErrorMessageBase message = new ErrorMessageBase();
+
+		validateUsername(updatePassword.username, message);
+		validatePassword(updatePassword.newPassword, message);
+		//question and response have same validation rules
+		validateChallengeQuestion(updatePassword.challengeAnswer, message);
+
+		return message;		
+	}
+	
+	public ErrorMessageBase validateUnknownPasswordInfo(String userId) {
+		ErrorMessageBase message = new ErrorMessageBase();
+		
+		validateUsername(userId, message);
+
+		return message;				
+	}
+	
+	public ErrorMessageBase validatePasswordUpdate(UpdatePassword updatePassword) {
+		ErrorMessageBase message = new ErrorMessageBase();
+		
+		validateUsername(updatePassword.userName, message);
+		validatePassword(updatePassword.newPassword, message);
+		validatePassword(updatePassword.oldPassword, message);
+		validateToken(updatePassword.token, message);
+
+		return message;		
+	}
+
+	public ErrorMessageBase validateLoginRequest(LoginRequest loginRequest) {
+		ErrorMessageBase message = new ErrorMessageBase();
+		
+		validateUsername(loginRequest.userName, message);
+		validatePassword(loginRequest.password, message);
+		
+		return message;
+	}
 	
 	public ErrorMessageBase validateLoginCreation(LoginCreation loginCreation) {
 		ErrorMessageBase message = new ErrorMessageBase();
@@ -96,4 +138,23 @@ public class LoginManager {
 		
 	}
 
+
+
+	void validateToken(String token, ErrorMessageBase message) {
+		if(token == null) {
+			message.errorMsg.add("password is Null");
+			message.messageSuccess = false;
+		}
+		else if(token.length() == 0 || token.length() > 20) {
+			message.errorMsg.add("password is the wrong length");
+			message.messageSuccess = false;
+		}
+		else {
+			boolean value = token.matches("[a-zA-Z0-9]+");
+			if(! value ) {
+				message.errorMsg.add("Password contains invalid characters:"+token);
+				message.messageSuccess = false;
+			} 
+		}			
+	}
 }
