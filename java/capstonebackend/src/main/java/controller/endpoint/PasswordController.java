@@ -28,7 +28,7 @@ import manager.login.LoginManager;
  *
  */
 @RestController
-public class AccountController {
+public class PasswordController {
 
 	private final AtomicLong counter = new AtomicLong();
 	
