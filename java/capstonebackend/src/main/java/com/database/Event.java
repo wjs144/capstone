@@ -1,4 +1,4 @@
-package database;
+package com.database;
 
 /**
  * used to store all the base event information

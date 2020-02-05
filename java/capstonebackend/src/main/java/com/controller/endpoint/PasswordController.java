@@ -1,7 +1,8 @@
-package controller.endpoint;
+package com.controller.endpoint;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,8 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.manager.login.LoginManager;
+
 import common.message.EndpointMessageBase;
-import login.manager.LoginManager;
 import login.message.GetUnknownPasswordResponse;
 import login.message.LoginCreation;
 import login.message.LoginCreationResponse;
@@ -32,6 +34,9 @@ public class PasswordController {
 
 	private final AtomicLong counter = new AtomicLong();
 	
+	@Autowired
+	LoginManager manager;
+	
 	/**
 	 * Used when a user wants to log into the application, 
 	 * @param loginRequest - POST data from the front end application
@@ -41,7 +46,7 @@ public class PasswordController {
 	public LoginResponse logInUser(@RequestBody LoginRequest loginRequest) {
 		System.out.println("got loginRequest:" + loginRequest.userName + " " + loginRequest.password);
 		
-		LoginManager manager = new LoginManager();
+//		LoginManager manager = new LoginManager();
 		manager.validateLoginRequest(loginRequest);
 		
 		LoginResponse resp = new LoginResponse();
@@ -60,7 +65,7 @@ public class PasswordController {
 		System.out.println("got loginRequest:" + loginCreation.userName + " " + loginCreation.password +
 				" " + loginCreation.email + " " + loginCreation.challengeQuestion + " " + loginCreation.challengeResponse);
 		
-		LoginManager manager = new LoginManager();
+//		LoginManager manager = new LoginManager();
 		manager.validateLoginCreation(loginCreation);
 		
 		LoginCreationResponse resp = new LoginCreationResponse();
@@ -78,7 +83,7 @@ public class PasswordController {
 		System.out.println("got loginRequest:" + updatePassword.userName + " " + updatePassword.newPassword
 				+ " " + updatePassword.oldPassword + " " + updatePassword.token);
 		
-		LoginManager manager = new LoginManager();
+//		LoginManager manager = new LoginManager();
 		manager.validatePasswordUpdate(updatePassword);
 		
 		UpdatePasswordResponse resp = new UpdatePasswordResponse();
@@ -96,8 +101,10 @@ public class PasswordController {
 	public GetUnknownPasswordResponse getUnknownPasswordInformatino(@PathVariable String userId) {
 		System.out.println("got loginRequest:" + userId );
 		
-		LoginManager manager = new LoginManager();
+//		LoginManager manager = new LoginManager();
 		manager.validateUnknownPasswordInfo(userId);
+		
+		manager.saveAccount();
 		
 		GetUnknownPasswordResponse resp = new GetUnknownPasswordResponse();
 		resp.messageSuccess =true;
@@ -115,7 +122,7 @@ public class PasswordController {
 		System.out.println("got loginRequest:" + updatePassword.challengeAnswer + " " + updatePassword.newPassword
 				+ " " + updatePassword.username );
 		
-		LoginManager manager = new LoginManager();
+//		LoginManager manager = new LoginManager();
 		manager.validateUnknownPasswordUpdate(updatePassword);
 		
 		EndpointMessageBase resp = new EndpointMessageBase();

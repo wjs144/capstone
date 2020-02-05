@@ -1,4 +1,4 @@
-package controller.endpoint;
+package com.controller.endpoint;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import common.message.EndpointMessageBase;
 
 @RestController
-public class EventController {
+public class ProfileController {
 
-	@GetMapping("/event")
-	public EndpointMessageBase getEventInformation() {
+	
+	@GetMapping("/profile")
+	public EndpointMessageBase getProfileInformation() {
 		
 		EndpointMessageBase resp = new EndpointMessageBase();
 		
@@ -21,8 +22,8 @@ public class EventController {
 		return resp;
 	}
 	
-	@PostMapping("/event")
-	public EndpointMessageBase updateEvent() {
+	@PostMapping("/profile")
+	public EndpointMessageBase updateProfile() {
 		
 		EndpointMessageBase resp = new EndpointMessageBase();
 		
@@ -31,8 +32,8 @@ public class EventController {
 		return resp;
 	}
 	
-	@PutMapping("/event")
-	public EndpointMessageBase newEvent() {
+	@PutMapping("/profile")
+	public EndpointMessageBase newProfile() {
 		
 		EndpointMessageBase resp = new EndpointMessageBase();
 		
@@ -41,8 +42,8 @@ public class EventController {
 		return resp;
 	}
 	
-	@DeleteMapping("/event")
-	public EndpointMessageBase removeEvent() {
+	@DeleteMapping("/profile")
+	public EndpointMessageBase removeProfile() {
 		
 		EndpointMessageBase resp = new EndpointMessageBase();
 		

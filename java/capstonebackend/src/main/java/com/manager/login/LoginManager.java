@@ -1,4 +1,10 @@
-package login.manager;
+package com.manager.login;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.database.Account;
+import com.database.AccountRepository;
 
 import common.message.ErrorMessageBase;
 import login.message.LoginCreation;
@@ -6,10 +12,30 @@ import login.message.LoginRequest;
 import login.message.UpdatePassword;
 import login.message.UpdateUnknownPassword;
 
+@Service
 public class LoginManager {
+	
+	@Autowired
+	public AccountRepository ar;
 	
 	public LoginManager()
 	{}
+	
+	public void saveAccount() {
+		Account ac = new Account();
+		ac.setAccountActive("YES");
+		ac.setLoginID(1);
+		ac.setPassword("password");
+		ac.setScreenName("test");
+		if(ar == null)
+		{
+			System.out.println("NULL AR");
+		}
+		else {
+			
+			ar.save(ac);
+		}
+	}
 
 	public ErrorMessageBase validateUnknownPasswordUpdate(UpdateUnknownPassword updatePassword) {
 		ErrorMessageBase message = new ErrorMessageBase();
