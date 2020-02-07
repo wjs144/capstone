@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'capstone-frontend';
+
+  doFunction() {
+    console.log('im in a function');
+  }
 }
