@@ -11,6 +11,10 @@ import common.message.EndpointMessageBase;
 @RestController
 public class EventController {
 
+	/**
+	 * Get the event Infomration 
+	 * @return {@link EndpointMessageBase}
+	 */
 	@GetMapping("/event")
 	public EndpointMessageBase getEventInformation() {
 		
