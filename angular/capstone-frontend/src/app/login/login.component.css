@@ -1,0 +1,21 @@
+.mat-card-align{
+    width: 368px;
+}
+
+.login-button-width {
+    width: 140px;
+}
+
+.create-button-width {
+    width: 170px;
+}
+
+.btn-sm {
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.login-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

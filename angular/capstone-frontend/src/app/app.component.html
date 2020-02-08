@@ -1,14 +1,23 @@
 <mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true">
-    <button  mat-stroked-button (click)="doFunction()" mat-raised-button>
-      I do something
-    </button>
+  <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="true" style="height:100vh">
+    <div fxLayout="column" fxLayoutGap="20px">
+
+      <button  mat-stroked-button (click)="doFunction()">
+        I do something
+      </button>
+      <button  mat-stroked-button routerLink="/login">
+        Login
+      </button>
+      <button  mat-stroked-button routerLink="/dashboard">
+        dashboard
+      </button>
+    </div>
   </mat-drawer>
 
   <div>
-    <button  mat-stroked-button type="button" mat-button >
+    <!-- <button  mat-stroked-button type="button" mat-button >
       Example button
-    </button>
+    </button> -->
     <router-outlet></router-outlet>
   </div>
 

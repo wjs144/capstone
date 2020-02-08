@@ -1,0 +1,30 @@
+<div style="height: 100vh" fxLayoutAlign="center center">
+
+    <mat-card class="mat-card-align" fxLayout="column" fxLayoutAlign="center center">
+        
+        <p>Have an Account?</p>
+        <mat-form-field>
+            <mat-label>Username</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput>
+        </mat-form-field>
+        <button  mat-stroked-button class="login-button-width" (click)="onLogin()">
+            Login
+        </button>
+        <button  mat-stroked-button class="login-button-width btn-sm" (click)="onForgotPassword()">
+            Forgot Password
+        </button>
+        <div class="login-divider"><mat-divider></mat-divider></div>
+        <div fxLayout="row">
+            <button  mat-stroked-button class="create-button-width" routerLink="/createAccount">
+                Create User Account
+            </button>
+            <button  mat-stroked-button class="create-button-width" routerLink="/createAccount">
+                Create Artist Account
+            </button>
+        </div>
+    </mat-card>
+</div>
