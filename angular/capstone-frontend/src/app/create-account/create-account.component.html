@@ -1,57 +1,56 @@
-<div style="height: 100vh" fxLayoutAlign="center center">
-
-    <mat-card class="mat-card-align" fxLayout="column" fxLayoutAlign="center center">
-
+<!-- have the page the whole height of the screen (100vh) center elements in it and data is attached to the formGroup Obj -->
+<div style="height: 100vh" fxLayoutAlign="center center" [formGroup]="formGroup">
+    <!-- Mat card give the data somewhere to be -->
+    <mat-card fxLayout="column" fxLayoutAlign="center center">
         <p>Create an Account</p>
         <mat-form-field>
-            <mat-label>Type</mat-label>
-            <mat-select [(value)]="accountType">
+            <mat-label>*Type</mat-label>
+            <mat-select formControlName="accountType">
                 <mat-option value="fan">Fan</mat-option>
                 <mat-option value="band">Band</mat-option>
             </mat-select>
         </mat-form-field>
-        <!-- <div [ngClass]="accountType === 'fan' ? '' : 'element-visibility-hidden'"> -->
-            <div *ngIf="accountType === 'fan'" fxLayout="column">
-
+        <!-- *ngIf makes its elements only exist if true -->
+        <div *ngIf="formGroup.get('accountType').value === 'fan'" fxLayout="column">
             <mat-form-field>
                 <mat-label>First Name</mat-label>
-                <input matInput>
+                <input matInput formControlName="firstName">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Last Name</mat-label>
-                <input matInput>
+                <input matInput formControlName="lastName">
             </mat-form-field>
         </div>
-        <!-- <div [ngClass]="accountType === 'band' ? '' : 'element-visibility-hidden'"> -->
-            <div *ngIf="accountType === 'band'">
+        <div *ngIf="formGroup.get('accountType').value === 'band'">
             <mat-form-field>
-                <mat-label>Band Name</mat-label>
-                <input matInput>
+                <mat-label>*Band Name</mat-label>
+                <input matInput formControlName="bandName">
             </mat-form-field>
         </div>
         <mat-form-field>
             <mat-label>Phone</mat-label>
-            <input matInput>
+            <input matInput formControlName="phone">
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput>
+            <mat-label>*Username</mat-label>
+            <input matInput formControlName="userName">
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput>
+            <mat-label>*Password</mat-label>
+            <input matInput formControlName="password">
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Recovery Question</mat-label>
-            <mat-select [(value)]="recoveryQuestion">
+            <mat-label>*Recovery Question</mat-label>
+            <mat-select formControlName="recoveryQuestion">
                 <mat-option value="What was your first car?">What was your first car?</mat-option>
                 <mat-option value="What Was your First pet's name?">What Was your First pet's name?</mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field>
-            <mat-label>Recovery Answer</mat-label>
-            <input matInput>
+            <mat-label>*Recovery Answer</mat-label>
+            <input matInput formControlName="recoveryAnswer">
         </mat-form-field>
+        <!-- Button is disabled and unclickable if the formGroup obj is invalid  -->
         <button mat-stroked-button (click)="onCreateAccount()">
             Create Account
         </button>

@@ -1,15 +1,15 @@
-<div style="height: 100vh" fxLayoutAlign="center center">
+<div style="height: 100vh" fxLayoutAlign="center center" [formGroup]="formGroup">
 
     <mat-card class="mat-card-align" fxLayout="column" fxLayoutAlign="center center">
         
         <p>Have an Account?</p>
         <mat-form-field>
             <mat-label>Username</mat-label>
-            <input matInput>
+            <input matInput formControlName="username">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput>
+            <input matInput formControlName="password">
         </mat-form-field>
         <button  mat-stroked-button class="login-button-width" (click)="onLogin()">
             Login
